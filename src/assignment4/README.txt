@@ -35,4 +35,8 @@ and cut and paste the content of example.pig.  I prefer to do this line by line
 
 Note: The program may appear to hang with a 0% completion time... go check the job tracker. Scroll down. You should see a MapReduce job running with some non-zero progress. 
 
+NB: http://localhost:9100/jobtracker.jsp
+
 Also note that the script will generate more than one MapReduce job.
+
+
