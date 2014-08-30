@@ -1,0 +1,115 @@
+4+5
+ls
+# General prerequisites#
+install.packages("codetools")#
+install.packages("Rcpp")#
+#
+# Dependencies for package "caret"#
+install.packages("lattice")#
+install.packages("Matrix")#
+install.packages("RcppEigen")#
+install.packages("MASS")#
+install.packages("nlme")#
+install.packages("lme4")#
+install.packages("nnet")#
+install.packages("car")#
+install.packages("caret")#
+#
+install.packages("rpart")#
+install.packages("tree")#
+install.packages("randomForest")#
+#
+# Dependencies for package "e1071"#
+install.packages("class")#
+install.packages("e1071")#
+#
+install.packages("ggplot2")
+ls
+dir
+where
+pwd
+cd
+cd i
+getwd()
+dir()
+ls()
+getwd()
+getwd()
+seaflow <- read.csv(file="seaflow_21min.csv",head=TRUE,sep=",")
+summary(seaflow)
+trainIndex <- createDataPartition(pop$seaflow, p = .5,list = FALSE,times = 1)
+library(caret)
+trainIndex <- createDataPartition(pop$seaflow, p = .5,list = FALSE,times = 1)
+summary(seaflow)
+trainIndex <- createDataPartition(pop$seaflow, p = .5,list = FALSE,times = 1)
+trainIndex <- createDataPartition(seaflow$pop, p = .5,list = FALSE,times = 1)
+head(trainIndex)
+seaflowTrain <- seaflow[ trainIndex,]
+seaflowTest <- seaflow[-trainIndex,]
+summary(seaflowTrain)
+plot(seaflow$pe, seaflow $chl_small, col=seaflow$pop)
+ggplot(seaflow$pe, seaflow $chl_small, col=seaflow$pop)
+qplot(seaflow$pe, seaflow $chl_small, col=seaflow$pop)
+fol <- formula(seaflow$pop ~ seaflow$fsc_small + seaflow$fsc_perp + seaflow$fsc_big + seaflow$pe + seaflow$chl_big + seaflow$chl_small)
+model <- rpart(fol, method="class", data= seaflowTrain)
+library(rpart)
+model <- rpart(fol, method="class", data= seaflowTrain)
+print(model)
+qplot(seaflow$pe, seaflow $chl_small, col=seaflow$pop)
+preResults <- predict(model, seaflowTest)
+preResults <- predict(model, seaflowTest)
+preResults <- predict(model, newdata=seaflowTest)
+preResults <- predict(model, newdata=seaflowTest, type="class")
+results <- predict(model, newdata=seaflowTest, type="class")
+length(preResults)
+preResults <- predict(model, newdata=seaflowTest, type="class")
+fol <- formula(seaflowTrain $pop ~ seaflowTrain $fsc_small + seaflowTrain $fsc_perp + seaflowTrain $fsc_big + seaflowTrain $pe + seaflowTrain $chl_big + seaflowTrain $chl_small)
+model <- rpart(fol, method="class", data= seaflowTrain)
+print(model)
+preResults <- predict(model, newdata=seaflowTest, type="class")
+length(preResults)
+preResults <- predict(model, newdata=seaflowTest, type="class")
+fol <- formula (pop ~ fsc_small + fsc_perp + chl_small + pe + chl_big + chl_small)
+model <- rpart(fol, method="class", data= seaflowTrain)
+print(model)
+preResults <- predict(model, newdata=seaflowTest, type="class")
+prob <- sum(preResults[,1] == seaflowTest$pop) / nrow(seaflowTest)
+prob <- sum(preResults == seaflowTest$pop) / nrow(seaflowTest)
+prob
+library(randomforest)#
+model2 <- randomForest(fol, data= seaflowTrain)
+library(randomforest)
+model2 <- randomForest(fol, data= seaflowTrain)
+preResults2 <- predict(model2, newdata=seaflowTest, type="class")
+prob2 <- sum(preResults2 == seaflowTest$pop) / nrow(seaflowTest)
+prob2
+importance(model2)
+importance(model)
+model3 <- svm(fol, data= seaflowTrain)
+preResults3 <- predict(model3, newdata=seaflowTest, type="class")
+prob3 <- sum(preResults3 == seaflowTest$pop) / nrow(seaflowTest)
+prob3
+table(pred = preResults, true = seaflowTest$pop)
+table(pred = preResults2, true = seaflowTest$pop)
+table(pred = preResults3, true = seaflowTest$pop)
+plot(seaflow$fsc_small)
+seaflow <- read.csv(file="seaflow_21min.csv",head=TRUE,sep=",")
+plot(seaflow$fsc_small)
+summary(seaflow)
+plot(seaflow$fsc_perp)
+plot(seaflow$fsc_big)
+plot(seaflow$pe)
+plot(seaflow$chl_small)
+plot(seaflow$chl_big)
+plot(seaflow$pop)
+plot(seaflow$time, seaflow $chl_big, col=seaflow$pop)
+seaflow <- read.csv(file="seaflow_21min_filtered208.csv",head=TRUE,sep=",")
+trainIndex <- createDataPartition(pop$seaflow, p = .5,list = FALSE,times = 1)
+summary(seaflow)
+trainIndex <- createDataPartition(seaflow$pop, p = .5,list = FALSE,times = 1)
+seaflowTrain <- seaflow[ trainIndex,];seaflowTest <- seaflow[-trainIndex,]
+model4 <- svm(fol, data= seaflowTrain)
+preResults4 <- predict(model4, newdata=seaflowTest, type="class")
+prob4 <- sum(preResults4 == seaflowTest$pop) / nrow(seaflowTest)
+prob4
+prob4 - prob3
